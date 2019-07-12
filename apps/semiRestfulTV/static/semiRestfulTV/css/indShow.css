@@ -1,0 +1,8 @@
+.messageBanner{
+    background: green;
+    color: white;
+    list-style-type: none;
+    border: 1px solid black;
+    margin-bottom: 3px;
+    padding: 2px;
+}

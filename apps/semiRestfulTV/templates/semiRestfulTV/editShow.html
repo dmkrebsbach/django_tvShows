@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    	<title>Show Database</title>
+        <meta charset="utf-8">
+        {% load static%}
+        <link rel="stylesheet" href="{% static 'semiRestfulTV/css/editShow.css' %}">
+	</head>
+    <body>
+            <a class="btn" href="/shows">Go Back</a>
+            <div class="container">
+                
+                {% if messages %}
+                <ul class = "messages">
+                    {% for message in messages %}
+                        <li class="messageBanner" {% if message.tags %} class="{{ message.tags }}"{% endif %} >{{ message }}</li> 
+                    {% endfor %}
+                </ul>
+                {% endif %}
+
+                <h1>Edit Show</h1>
+    
+                <form action="/shows/{{showEdit.id}}/update" method="post">
+                    {% csrf_token %}
+                    <h3>Title</h3>
+                    <input type="text" name="title" placeholder="{{showEdit.title}}">
+                    <h3>Network</h3>
+                    <input type="text" name="network" placeholder="{{showEdit.network}}">
+                    <h3>Release Date</h3>
+                    <input type="date" name="date" placeholder="{{showEdit.releaseDate}}">
+                    <h3>Description</h3>
+                    <textarea type="text" name="description" placeholder="{{showEdit.description}}"></textarea></br>
+                    <input class="btn" type="submit" value="Update">
+                </form>
+
+                <a class="btn" href="/shows/{{showEdit.id}}">Go to Show</a>
+            </div>
+        </body>
+</html>
